@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<!-- 商品模块 -->
+	<bean name="ProductDao" class="com.itheima.store.daoImpl.ProductDaoImpl"></bean>
+	<bean name="ProductService" class="com.itheima.store.serviceImpl.ProductServiceImpl"></bean>
+	<!--  用户模块 -->
+	<bean name="UserDao" class="com.itheima.store.dao.impl.UserDaoImpl"></bean>
+	<bean name="UserService" class="com.itheima.store.service.impl.UserServiceImpl"></bean>
+</beans>
