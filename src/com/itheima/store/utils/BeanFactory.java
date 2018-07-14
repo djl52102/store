@@ -4,6 +4,8 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import com.itheima.store.utils.transaction.TransactionUtils;
+
 public class BeanFactory {
 	private static Document doc=null;
 	static{
@@ -21,10 +23,14 @@ public class BeanFactory {
 		Element beanEle=(Element) doc.selectSingleNode("//bean[@name='"+simpleName+"']");
 		//3.获取元素的class属性
 		String className = beanEle.attributeValue("class");
-		//4.获取实现类的全限定名
 		try {
+			//4.获取实现类的全限定名
 			Class<T> forName = (Class<T>) Class.forName(className);
-			return forName.newInstance();
+			Object newInstance = forName.newInstance();
+			//调用TransactionUtils方法判断是否需要增强,返回对象
+			Object proxy=TransactionUtils.proxy(newInstance);
+			//在创建好对象的时候进行增强
+			return (T) proxy;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

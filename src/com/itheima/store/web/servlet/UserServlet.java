@@ -37,7 +37,7 @@ public class UserServlet extends BaseServlet {
     public void registerUI(HttpServletRequest request,HttpServletResponse response){
     	//System.out.println("×¢²á·½·¨");
     	try {
-			request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/user/register.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -147,7 +147,16 @@ public class UserServlet extends BaseServlet {
             	
             	request.getSession().setAttribute("user", user);
             	
-    			response.sendRedirect(request.getContextPath());
+            	//ÅÐ¶ÏÖ®Ç°µÇÂ¼ÍøÖ·ÊÇ·ñ´æÔÚ
+            	String oriPath =(String)request.getSession().getAttribute("oriPath");
+            	
+            	if(oriPath != null){
+            		response.sendRedirect(oriPath);
+            	}else{
+            		response.sendRedirect(request.getContextPath());
+            	}
+            	  
+            	
     		}else{
     			request.setAttribute("msg", "ÓÃ»§×´Ì¬Âë´íÎó");
     			

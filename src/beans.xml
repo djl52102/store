@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
 	<!-- 商品模块 -->
-	<bean name="ProductDao" class="com.itheima.store.daoImpl.ProductDaoImpl"></bean>
-	<bean name="ProductService" class="com.itheima.store.serviceImpl.ProductServiceImpl"></bean>
+	<bean name="ProductDao" class="com.itheima.store.dao.impl.ProductDaoImpl"></bean>
+	<bean name="ProductService" class="com.itheima.store.service.impl.ProductServiceImpl"></bean>
 	<!--  用户模块 -->
 	<bean name="UserDao" class="com.itheima.store.dao.impl.UserDaoImpl"></bean>
 	<bean name="UserService" class="com.itheima.store.service.impl.UserServiceImpl"></bean>
+	<!--  分类模块 -->
+	<bean name="CategoryDao" class="com.itheima.store.dao.impl.CategoryDaoImpl"></bean>
+	<bean name="CategoryService" class="com.itheima.store.service.impl.CategoryServiceImpl"></bean>
+	<!--  订单模块 -->
+	<bean name="OrderDao" class="com.itheima.store.dao.impl.OrderDaoImpl"></bean>
+	<bean name="OrderService" class="com.itheima.store.service.impl.OrderServiceImpl"></bean>
 </beans>
